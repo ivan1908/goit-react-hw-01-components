@@ -6,7 +6,7 @@ const getRandomHexColor = () =>
 
 const Statistics = ({ title, stats }) => (
   <section className={styles.statistics}>
-    <h2 className={styles.title}>{title}</h2>
+    {title && <h2 className={styles.title}>{title}</h2>}
 
     <ul className={styles.list}>
       {stats.map(stat => (
@@ -27,10 +27,10 @@ Statistics.propTypes = {
   title: PropTypes.string,
   stats: PropTypes.PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
-      label: PropTypes.string,
-      percentage: PropTypes.number,
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
     })
-  )
+  ).isRequired,
 };
 export default Statistics;
